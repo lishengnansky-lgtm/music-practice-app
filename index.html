@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>音乐练习记录</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+
+  <!-- PWA Manifest -->
+  <link rel="manifest" href="manifest.webmanifest" />
+  <meta name="theme-color" content="#111827" />
+
+  <!-- iOS 添加到主屏幕支持 -->
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="练习记录" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="app-header">
+      <h1>音乐练习记录</h1>
+      <p class="subtitle">记录每天练习 · 按月统计</p>
+    </header>
+
+    <!-- 日期选择 + 今日总时长 -->
+    <section class="card">
+      <div class="section-header">
+        <h2>今日练习</h2>
+        <span id="todayTotal" class="tag">总计 0 分钟</span>
+      </div>
+      <div class="row">
+        <label for="datePicker">日期</label>
+        <input type="date" id="datePicker" />
+      </div>
+    </section>
+
+    <!-- 模板应用 -->
+    <section class="card">
+      <div class="section-header">
+        <h2>练习计划模板</h2>
+      </div>
+      <div class="row">
+        <label for="templateSelect">选择模板</label>
+        <select id="templateSelect"></select>
+      </div>
+      <div class="row">
+        <button id="applyTemplateBtn">应用到当天</button>
+        <button id="openTemplateManagerBtn" class="secondary">管理模板</button>
+      </div>
+    </section>
+
+    <!-- 添加练习记录 -->
+    <section class="card">
+      <div class="section-header">
+        <h2>添加练习记录</h2>
+      </div>
+      <div class="row">
+        <label for="categorySelect">练习类型</label>
+        <select id="categorySelect">
+          <option value="vocal">声乐</option>
+          <option value="instrument">乐器</option>
+          <option value="songwriting">创作</option>
+          <option value="production">制作</option>
+          <option value="band">乐队排练</option>
+          <option value="other">其他</option>
+        </select>
+      </div>
+      <div class="row">
+        <label for="titleInput">练习内容</label>
+        <input type="text" id="titleInput" placeholder="例如：胸声练习 / 吉他扫弦" />
+      </div>
+      <div class="row">
+        <label for="minutesInput">时长（分钟）</label>
+        <input type="number" id="minutesInput" min="1" step="1" placeholder="30" />
+      </div>
+      <div class="row">
+        <label for="notesInput">备注</label>
+        <textarea id="notesInput" rows="2" placeholder="可记录曲目、感受等"></textarea>
+      </div>
+      <div class="row">
+        <button id="addEntryBtn">添加记录</button>
+      </div>
+    </section>
+
+    <!-- 当日记录列表 -->
+    <section class="card">
+      <div class="section-header">
+        <h2>当天详细记录</h2>
+      </div>
+      <div id="dailyList" class="list-empty">
+        暂无记录
+      </div>
+    </section>
+
+    <!-- 月度统计 -->
+    <section class="card">
+      <div class="section-header">
+        <h2>按月统计</h2>
+      </div>
+      <div class="row">
+        <label for="monthPicker">选择月份</label>
+        <input type="month" id="monthPicker" />
+      </div>
+      <div id="monthSummary"></div>
+      <div id="monthChart"></div>
+    </section>
+
+    <!-- 提醒设置 -->
+    <section class="card">
+      <div class="section-header">
+        <h2>练习提醒</h2>
+      </div>
+      <div class="row row-inline">
+        <label for="reminderEnabled">开启每日提醒</label>
+        <input type="checkbox" id="reminderEnabled" />
+      </div>
+      <div class="row">
+        <label for="reminderTime">提醒时间</label>
+        <input type="time" id="reminderTime" />
+      </div>
+      <p class="hint">
+        说明：此提醒在 App 打开时有效，会在设定时间弹出提示。  
+        由于浏览器限制，关闭 App 后无法保证准点弹出。
+      </p>
+    </section>
+
+    <!-- 模板管理弹层 -->
+    <div id="templateModal" class="modal hidden">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>管理模板</h2>
+          <button id="closeTemplateModalBtn" class="icon-btn" aria-label="关闭">✕</button>
+        </div>
+        <div class="modal-body">
+          <h3>已有模板</h3>
+          <div id="templateList"></div>
+
+          <hr />
+
+          <h3>新建模板</h3>
+          <div class="row">
+            <label for="newTemplateName">模板名称</label>
+            <input id="newTemplateName" type="text" placeholder="例如：声乐日 / 制作日" />
+          </div>
+          <div class="row">
+            <label for="newTemplateItems">练习条目（每行一个）</label>
+            <textarea id="newTemplateItems" rows="4" placeholder="例如：&#10;胸声练习&#10;混声练习&#10;耳返训练"></textarea>
+          </div>
+          <div class="row">
+            <button id="saveTemplateBtn">保存模板</button>
+          </div>
+          <p class="hint">
+            应用模板时，会把这些条目添加到当天的练习列表，时长默认 0 分钟，之后你可以逐条填入实际时长。
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

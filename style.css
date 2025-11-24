@@ -1,0 +1,372 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif;
+  background: #020617;
+  color: #e5e7eb;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+}
+
+.app {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 16px 16px 32px;
+}
+
+.app-header {
+  padding: 8px 4px 16px;
+}
+
+.app-header h1 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.subtitle {
+  margin: 4px 0 0;
+  font-size: 13px;
+  color: #9ca3af;
+}
+
+.card {
+  background: rgba(15, 23, 42, 0.9);
+  border-radius: 16px;
+  padding: 16px;
+  margin-bottom: 12px;
+  border: 1px solid rgba(55, 65, 81, 0.9);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.55);
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.section-header h2 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.tag {
+  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: rgba(37, 99, 235, 0.15);
+  color: #bfdbfe;
+}
+
+.row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.row-inline {
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+label {
+  font-size: 13px;
+  color: #9ca3af;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="date"],
+input[type="time"],
+input[type="month"],
+select,
+textarea {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid #374151;
+  background: rgba(15, 23, 42, 0.8);
+  color: #e5e7eb;
+  padding: 8px 10px;
+  font-size: 14px;
+}
+
+textarea {
+  resize: vertical;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #6b7280;
+}
+
+button {
+  border: none;
+  border-radius: 999px;
+  padding: 8px 16px;
+  font-size: 14px;
+  cursor: pointer;
+  background: #2563eb;
+  color: white;
+  font-weight: 500;
+  box-shadow: 0 6px 18px rgba(37, 99, 235, 0.45);
+}
+
+button.secondary {
+  background: transparent;
+  color: #cbd5f5;
+  border: 1px solid #4b5563;
+  box-shadow: none;
+}
+
+button:active {
+  transform: translateY(1px);
+  box-shadow: 0 3px 10px rgba(37, 99, 235, 0.4);
+}
+
+.hint {
+  font-size: 11px;
+  color: #9ca3af;
+  line-height: 1.4;
+}
+
+/* 列表样式 */
+#dailyList.list-empty {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.entry-item {
+  padding: 10px 10px;
+  border-radius: 10px;
+  border: 1px solid #374151;
+  margin-bottom: 8px;
+  background: rgba(15, 23, 42, 0.9);
+}
+
+.entry-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.entry-title {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.entry-meta {
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+.entry-notes {
+  font-size: 12px;
+  margin-top: 4px;
+  color: #d1d5db;
+}
+
+.chip {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 11px;
+  background: rgba(37, 99, 235, 0.2);
+  color: #bfdbfe;
+}
+
+.chip.category-vocal {
+  background: rgba(249, 115, 22, 0.25);
+  color: #fed7aa;
+}
+.chip.category-instrument {
+  background: rgba(16, 185, 129, 0.25);
+  color: #a7f3d0;
+}
+.chip.category-songwriting {
+  background: rgba(129, 140, 248, 0.25);
+  color: #c7d2fe;
+}
+.chip.category-production {
+  background: rgba(34, 197, 235, 0.25);
+  color: #bae6fd;
+}
+.chip.category-band {
+  background: rgba(244, 63, 94, 0.25);
+  color: #fecaca;
+}
+.chip.category-other {
+  background: rgba(148, 163, 184, 0.25);
+  color: #e5e7eb;
+}
+
+.entry-actions {
+  margin-top: 6px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.entry-actions button {
+  padding: 4px 10px;
+  font-size: 11px;
+  box-shadow: none;
+}
+
+/* 月统计 */
+#monthSummary {
+  font-size: 13px;
+  color: #d1d5db;
+  margin-bottom: 8px;
+}
+
+#monthSummary table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 6px;
+}
+
+#monthSummary th,
+#monthSummary td {
+  font-size: 12px;
+  padding: 4px;
+  border-bottom: 1px solid #1f2933;
+  text-align: right;
+}
+
+#monthSummary th:first-child,
+#monthSummary td:first-child {
+  text-align: left;
+}
+
+/* 简易柱状图（按天总时长） */
+#monthChart {
+  margin-top: 8px;
+}
+
+.chart-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.chart-label {
+  width: 40px;
+  font-size: 11px;
+  color: #9ca3af;
+}
+
+.chart-bar-wrapper {
+  flex: 1;
+  height: 10px;
+  background: rgba(31, 41, 55, 0.9);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.chart-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #60a5fa, #a855f7);
+}
+
+/* 模板管理模态框 */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.72);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-content {
+  width: 100%;
+  max-width: 520px;
+  max-height: 90vh;
+  background: #020617;
+  border-radius: 20px;
+  border: 1px solid #4b5563;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.modal-header h2 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.modal-body {
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.icon-btn {
+  background: transparent;
+  border-radius: 999px;
+  border: 1px solid #4b5563;
+  box-shadow: none;
+  padding: 4px 8px;
+}
+
+.template-item {
+  padding: 8px 10px;
+  border-radius: 10px;
+  border: 1px solid #374151;
+  margin-bottom: 6px;
+  font-size: 13px;
+}
+
+.template-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.template-item-name {
+  font-weight: 500;
+}
+
+.template-item-items {
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+/* 小屏优化 */
+@media (max-width: 480px) {
+  .app {
+    padding: 12px;
+  }
+
+  .card {
+    padding: 12px;
+    border-radius: 14px;
+  }
+
+  .app-header h1 {
+    font-size: 22px;
+  }
+}
